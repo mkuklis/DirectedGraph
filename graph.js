@@ -28,7 +28,7 @@ Graph.prototype = {
   // adds edge between vertices
   addEdge: function(from, to, weight) {
     this.adjMatrix[from] = this.adjMatrix[from] || [];
-    if (weight) {
+    if (typeof weight != "undefined") {
       this.adjMatrix[from][to] = weight;
     }
     else {
@@ -71,8 +71,8 @@ Graph.prototype = {
   each: function(callback) {
     for (var i = 0; i < this.verSize; i++) {
       for (var j = 0; j < this.verSize; j++) {
-        if ((typeof this.adjMatrix[i]) != "undefined"
-          && (typeof this.adjMatrix[i][j]) != "undefined") { 
+        if (typeof this.adjMatrix[i] != "undefined"
+          && typeof this.adjMatrix[i][j] != "undefined") { 
           if (callback) {
             callback.call(this, this.vertices[i], this.vertices[j], this.adjMatrix[i][j]);
           }
